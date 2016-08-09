@@ -13,15 +13,12 @@
                 _spamLen = spamLen;
                 spamLen = parseInt(arg);
             }
-            var heartTable = (Txt1 + " " + Txt).split(" ");
             var i = 0;
             API.chatLog("if you want to stop the spam before " + spamLen + " lines just type \"/stopspam\"");
             chatTmr = setInterval(function() {
                 i++;
                 if (i <= spamLen) {
-                    API.sendChat(heartTable.join(" "));
-                    heartTable[10] = heartTable[0];
-                    heartTable.shift();
+                    API.sendChat(Txt1);
                 } else {
                     stopSpam();
                 }
@@ -29,30 +26,6 @@
         }
     }
     
-    function loveSpamv2(arg) {
-        var reverseHeartTable; 
-        if (chatTmr === undefined) {
-            if (!isNaN(arg) && arg !== "") {
-                _spamLen = spamLen;
-                spamLen = parseInt(arg);
-            }
-            var heartTable = loveSpamTxt.split(" ");
-            var i = 0;
-            API.chatLog("if you want to stop the spam before " + spamLen + " lines just type \"/stopspam\"");
-            chatTmr = setInterval(function() {
-                i++;
-                if (i <= spamLen) {
-                    reverseHeartTable = heartTable.slice().reverse();
-                    heartTable[5] = heartTable[0];
-                    API.sendChat(heartTable.join(" ") + " " + reverseHeartTable.join(" "));
-                    heartTable.shift();
-                } else {
-                    stopSpam();
-                }
-            }, 1000);
-        }
-    }
-
     function stopSpam() {
         clearInterval(chatTmr);
         chatTmr = undefined;
@@ -72,6 +45,8 @@
         command = command.split(" ");
         switch(command.shift()) {
             case "/bonhomme":
+                loveSpam(command.join(" "));
+                break;
             case "/stopbonhomme":
                 stopSpam();
                 break;
