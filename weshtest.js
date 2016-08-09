@@ -20,11 +20,10 @@
                 if (i <= spamLen) {
                     if (i==1){
                         API.sendChat(Txt1);
-                    }elseif (i==2){
+                    }else if (i==2){
                         API.sendChat(Txt2);
-                    }elseif (i==3){
+                    }else if (i==3){
                         API.sendChat(Txt3);
-                    }
                     }
                 } else {
                     stopSpam();
