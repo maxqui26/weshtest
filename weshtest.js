@@ -4,7 +4,7 @@
     var Txt1 = ":smile: ";
     var Txt2 = ":tshirt: ";
     var Txt3 = ":jeans: ";
-    var spamLen = 10;
+    var spamLen = 3;
     var chatTmr, _spamLen;
 
     function loveSpam(arg) {
@@ -18,7 +18,14 @@
             chatTmr = setInterval(function() {
                 i++;
                 if (i <= spamLen) {
-                    API.sendChat(Txt1);
+                    if (i==1){
+                        API.sendChat(Txt1);
+                    }elseif (i==2){
+                        API.sendChat(Txt2);
+                    }elseif (i==3){
+                        API.sendChat(Txt3);
+                    }
+                    }
                 } else {
                     stopSpam();
                 }
